@@ -19,13 +19,46 @@ document.addEventListener("DOMContentLoaded", () => {
         activityCard.className = "activity-card";
 
         const spotsLeft = details.max_participants - details.participants.length;
+        const isFull = spotsLeft === 0;
+
+        // Create participants list HTML
+        let participantsHTML = '';
+        if (details.participants.length > 0) {
+          const participantsList = details.participants
+            .map(email => `<li class="participant-item">${email}</li>`)
+            .join('');
+          participantsHTML = `
+            <div class="participants-section">
+              <div class="participants-header">
+                <span class="participants-title">Participants</span>
+                <span class="participants-count ${isFull ? 'full' : ''}">${details.participants.length}/${details.max_participants}</span>
+              </div>
+              <ul class="participants-list">${participantsList}</ul>
+            </div>
+          `;
+        } else {
+          participantsHTML = `
+            <div class="participants-section">
+              <div class="participants-header">
+                <span class="participants-title">Participants</span>
+                <span class="participants-count">${details.participants.length}/${details.max_participants}</span>
+              </div>
+              <div class="no-participants">No participants yet - be the first to join!</div>
+            </div>
+          `;
+        }
 
         activityCard.innerHTML = `
           <h4>${name}</h4>
-          <p>${details.description}</p>
-          <p><strong>Schedule:</strong> ${details.schedule}</p>
-          <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <p class="activity-description">${details.description}</p>
+          <p class="activity-schedule"><strong>Schedule:</strong> ${details.schedule}</p>
+          <p class="activity-availability"><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          ${participantsHTML}
         `;
+
+        if (isFull) {
+          activityCard.classList.add('full-activity');
+        }
 
         activitiesList.appendChild(activityCard);
 
