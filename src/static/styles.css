@@ -63,6 +63,17 @@ section h3 {
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.activity-card.full-activity {
+  border-left: 4px solid #ff6b6b;
+  background-color: #fff5f5;
 }
 
 .activity-card h4 {
@@ -72,6 +83,97 @@ section h3 {
 
 .activity-card p {
   margin-bottom: 8px;
+}
+
+.activity-description {
+  color: #555;
+  line-height: 1.5;
+}
+
+.activity-schedule,
+.activity-availability {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.participants-section {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 2px solid #e8e8e8;
+}
+
+.participants-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.participants-title {
+  font-weight: bold;
+  color: #1a237e;
+  font-size: 0.95em;
+}
+
+.participants-count {
+  background-color: #1a237e;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.participants-count.full {
+  background-color: #ff6b6b;
+}
+
+.participants-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.participant-item {
+  background-color: #f0f4ff;
+  margin: 4px 0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border-left: 3px solid #1a237e;
+  font-size: 0.85em;
+  color: #444;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-icon {
+  color: #ff6b6b;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 2px 4px;
+  border-radius: 2px;
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: bold;
+}
+
+.delete-icon:hover {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.no-participants {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  border: 1px dashed #ccc;
+  font-size: 0.9em;
 }
 
 .form-group {
